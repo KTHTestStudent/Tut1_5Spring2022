@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class CatController : MonoBehaviour
 {
-   public AudioClip musicClipOne;
+public AudioClip musicClipOne;
 
 public AudioClip musicClipTwo;
 
 public AudioSource musicSource;
+
+public Animator anim;
 
 // Update is called once per frame
 void Update()
 {
      if (Input.GetKeyDown(KeyCode.W))
         {
-          musicSource.clip = musicClipOne;
-          musicSource.Play();
+         musicSource.clip = musicClipOne;
+         musicSource.Play();
+         anim.SetInteger("state", 1);
 
          }
 
      if (Input.GetKeyUp(KeyCode.W))
         {
           musicSource.Stop();
+         anim.SetInteger("state", 0);
 
          }
 
@@ -30,11 +34,13 @@ void Update()
         {
           musicSource.clip = musicClipTwo;
           musicSource.Play();
+          anim.SetInteger("state", 2);
          }
 
      if (Input.GetKeyUp(KeyCode.R))
         {
           musicSource.Stop();
+          anim.SetInteger("state", 0);
 
          }
 
